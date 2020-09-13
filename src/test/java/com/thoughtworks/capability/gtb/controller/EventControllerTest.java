@@ -3,8 +3,6 @@ package com.thoughtworks.capability.gtb.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.capability.gtb.dto.EventDto;
 import com.thoughtworks.capability.gtb.vo.EventType;
-import com.thoughtworks.capability.gtb.vo.EventVo;
-import com.thoughtworks.capability.gtb.vo.UserVo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,10 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Date;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,8 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class EventControllerTest {
     private final String GET_EVENT_BY_ID_URL = "/events/%d";
     private final String CREATE_EVENT_URL = "/events";
-
-
 
     @Autowired
     MockMvc mockMvc;
