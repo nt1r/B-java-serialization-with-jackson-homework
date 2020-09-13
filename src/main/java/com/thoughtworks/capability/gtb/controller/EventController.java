@@ -1,9 +1,11 @@
 package com.thoughtworks.capability.gtb.controller;
 
+import com.thoughtworks.capability.gtb.converter.Converter;
+import com.thoughtworks.capability.gtb.dto.EventDto;
 import com.thoughtworks.capability.gtb.vo.EventType;
 import com.thoughtworks.capability.gtb.vo.EventVo;
 import com.thoughtworks.capability.gtb.vo.UserVo;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,8 @@ public class EventController {
   }
 
   @PostMapping("/events")
-  public void createEvent(@RequestBody EventVo event) {
-    log.info("create event: {}", event);
+  public EventVo createEvent(@RequestBody EventDto eventDto) {
+    // log.info("create event: {}", eventVo);
+    return Converter.eventDto2EventVo(eventDto);
   }
 }
